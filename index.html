@@ -1,155 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr Fix Home LLC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
 
-<title>Dr Fix Home LLC | Handyman & Home Repair Services NYC</title>
+    .hero {
+      background: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
 
-<meta name="description" content="Professional handyman and home repair services in Queens, Brooklyn, Manhattan, Bronx, Staten Island and Nassau County. Drywall repair, painting, tile installation and more.">
+    .hero h1 {
+      margin-bottom: 10px;
+      font-size: 38px;
+    }
 
-<style>
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
 
-body{
-font-family:Arial;
-margin:0;
-background:#f4f4f4;
-}
+    .btn {
+      background: #ff6600;
+      color: white;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 17px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-header{
-background:#1a1a1a;
-color:white;
-padding:40px;
-text-align:center;
-}
+    .btn:hover {
+      background: #e65c00;
+    }
 
-header h1{
-font-size:40px;
-margin-bottom:10px;
-}
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0, 0, 0, 0.65);
+    }
 
-button{
-background:#ff6600;
-color:white;
-border:none;
-padding:15px 25px;
-font-size:18px;
-cursor:pointer;
-border-radius:5px;
-}
+    .modal-content {
+      background: #fff;
+      margin: 5% auto;
+      padding: 25px;
+      width: 90%;
+      max-width: 520px;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
 
-section{
-padding:40px;
-max-width:1000px;
-margin:auto;
-}
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #333;
+    }
 
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-}
+    .modal-content h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
 
-.card{
-background:white;
-padding:20px;
-border-radius:6px;
-box-shadow:0 2px 5px rgba(0,0,0,0.2);
-}
+    .modal-content p {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #555;
+    }
 
-form{
-background:white;
-padding:20px;
-border-radius:6px;
-}
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
 
-input,textarea{
-width:100%;
-padding:10px;
-margin-bottom:10px;
-}
+    form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
 
-footer{
-background:#1a1a1a;
-color:white;
-text-align:center;
-padding:20px;
-}
+    .submit-btn {
+      width: 100%;
+      background: #ff6600;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 6px;
+      font-size: 17px;
+      cursor: pointer;
+    }
 
-</style>
-
+    .submit-btn:hover {
+      background: #e65c00;
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
+  <section class="hero">
+    <h1>Professional Handyman & Home Repair Services</h1>
+    <p>Serving Queens, Brooklyn, Manhattan, Bronx, Staten Island & Nassau County</p>
+    <button class="btn" onclick="openModal()">Request Free Estimate</button>
+  </section>
 
-<h1>Professional Handyman Services in NYC</h1>
+  <div id="estimateModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Request a Free Estimate</h2>
+      <p>Select the service you need and send us your project details.</p>
 
-<p>Serving Queens, Brooklyn, Manhattan, Bronx, Staten Island & Nassau County</p>
+      <form action="https://formspree.io/f/TU_ENDPOINT_AQUI" method="POST">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="tel" name="phone" placeholder="Phone Number" required />
+        <input type="email" name="email" placeholder="Email Address" required />
 
-<a href="tel:3470000000">
-<button>Call Now</button>
-</a>
+        <select name="service" required>
+          <option value="">Select a Service</option>
+          <option value="Drywall Repair">Drywall Repair</option>
+          <option value="Painting">Painting</option>
+          <option value="Tile Installation">Tile Installation</option>
+          <option value="Bathroom Repair">Bathroom Repair</option>
+          <option value="Kitchen Repair">Kitchen Repair</option>
+          <option value="Door Repair">Door Repair</option>
+          <option value="Floor Repair">Floor Repair</option>
+          <option value="Plumbing Repair">Plumbing Repair</option>
+          <option value="Carpentry">Carpentry</option>
+          <option value="General Handyman Service">General Handyman Service</option>
+          <option value="Other">Other</option>
+        </select>
 
-</header>
+        <textarea name="message" placeholder="Describe your project"></textarea>
 
-<section>
+        <button type="submit" class="submit-btn">Send Request</button>
+      </form>
+    </div>
+  </div>
 
-<h2>Our Services</h2>
+  <script>
+    function openModal() {
+      document.getElementById("estimateModal").style.display = "block";
+    }
 
-<div class="services">
+    function closeModal() {
+      document.getElementById("estimateModal").style.display = "none";
+    }
 
-<div class="card">
-<h3>Drywall Repair</h3>
-<p>Professional drywall repair, patching, taping and finishing.</p>
-</div>
+    window.onclick = function(event) {
+      const modal = document.getElementById("estimateModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
 
-<div class="card">
-<h3>Painting</h3>
-<p>Interior and exterior painting services for homes and apartments.</p>
-</div>
-
-<div class="card">
-<h3>Tile Installation</h3>
-<p>Bathroom, kitchen and floor tile installation and repair.</p>
-</div>
-
-<div class="card">
-<h3>Home Repair</h3>
-<p>General handyman repairs and maintenance services.</p>
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h2>Request Free Estimate</h2>
-
-<form>
-
-<input placeholder="Name">
-
-<input placeholder="Phone">
-
-<input placeholder="Email">
-
-<textarea placeholder="Describe your project"></textarea>
-
-<button>Send Request</button>
-
-</form>
-
-</section>
-
-<footer>
-
-<p>Dr Fix Home LLC | Handyman & Home Repair Services NYC</p>
-
-</footer>
+    window.onload = function() {
+      setTimeout(function() {
+        openModal();
+      }, 2500);
+    };
+  </script>
 
 </body>
-
 </html>
